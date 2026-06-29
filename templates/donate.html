@@ -48,7 +48,7 @@
 {% endblock %}
 
 {% block extra_js %}
-<script src="https://checkout.flutterwave.com/v3.js"></script>
+
 <script>
   function makePayment() {
     const name = document.getElementById('donorName').value;
@@ -73,11 +73,13 @@
         window.location.href = "/donation-success";
       },
       customizations: {
-        title: " Donation",
+        title: "CharityOrg Donation",
         description: "Payment for supporting our mission",
         logo: "https://via.placeholder.com/150",
       },
     });
   }
+
+
 </script>
 {% endblock %}

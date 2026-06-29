@@ -4,9 +4,12 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 from flask_mail import Mail, Message
 from datetime import datetime
-from dotenv import load_dotenv
 
+from dotenv import load_dotenv
 load_dotenv()
+
+FLW_SECRET_KEY = os.getenv("FLW_SECRET_KEY")
+FLW_PUBLIC_KEY = os.getenv("FLW_PUBLIC_KEY")
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'dev-key-for-charity')
@@ -83,12 +86,31 @@ def gallery():
     items = GalleryItem.query.all()
     return render_template('gallery.html', items=items)
 
+# this is an addition 
 @app.route('/donate', methods=['GET', 'POST'])
 def donate():
     if request.method == 'POST':
-        # Flutterwave integration logic will go here
-        pass
+        donor_name = request.form['donor_name']
+        email = request.form['email']
+        amount = request.form['amount']
+
+        donation = Donation(
+            donor_name=donor_name,
+            email=email,
+            amount=amount,
+            transaction_id="TEMP-" + str(datetime.utcnow())
+        )
+
+        db.session.add(donation)
+        db.session.commit()
+
+        flash("Donation recorded successfully!", "success")
+
+        return redirect(url_for('donation_success'))
+
     return render_template('donate.html')
+# it ends here
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -123,6 +145,56 @@ def donation_success():
     flash('Thank you for your generous donation!', 'success')
     return render_template('index.html')
 
+#comparison
+import requests
+import uuid
+from flask import request, redirect, url_for
+
+@app.route('/donate', methods=['GET', 'POST'])
+def donate():
+    if request.method == 'POST':
+
+        donor_name = request.form['donor_name']
+        email = request.form['email']
+        amount = float(request.form['amount'])
+
+        tx_ref = str(uuid.uuid4())
+
+        headers = {
+            "Authorization": f"Bearer {os.getenv('FLW_SECRET_KEY')}",
+            "Content-Type": "application/json"
+        }
+
+        data = {
+            "tx_ref": tx_ref,
+            "amount": amount,
+            "currency": "USD",
+            "redirect_url": url_for('donation_success', _external=True),
+            "payment_options": "card,banktransfer,mobilemoneyuganda",
+            "customer": {
+                "email": email,
+                "name": donor_name
+            },
+            "customizations": {
+                "title": "CharityOrg Donation",
+                "description": "Support NGO work"
+            }
+        }
+
+        response = requests.post(
+            "https://api.flutterwave.com/v3/payments",
+            json=data,
+            headers=headers
+        )
+
+        link = response.json()["data"]["link"]
+
+        return redirect(link)
+
+    return render_template("donate.html")
+
+# end of donation model
+
 @app.route('/admin')
 @login_required
 def admin_dashboard():
@@ -141,3 +213,7 @@ if __name__ == '__main__':
             db.session.add(admin)
             db.session.commit()
     app.run(host='0.0.0.0', port=5000)
+
+#env
+   
+
