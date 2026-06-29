@@ -1,0 +1,146 @@
+:root {
+    --primary-color: #007bff;
+    --navy-dark: #0a192f;
+    --navy-light: #112240;
+    --navy-accent: #233554;
+    --text-main: #ccd6f6;
+    --text-dim: #8892b0;
+    --accent-glow: #64ffda;
+    --gradient-bg: linear-gradient(135deg, #0a192f 0%, #020c1b 100%);
+}
+
+body {
+    background: var(--navy-dark);
+    background-attachment: fixed;
+    color: var(--text-main);
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    background-color: rgba(10, 25, 47, 0.95) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--navy-accent);
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: var(--text-main) !important;
+    font-weight: 500;
+}
+
+.navbar-brand {
+    color: var(--accent-glow) !important;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.card {
+    background-color: var(--navy-light);
+    border: 1px solid var(--navy-accent);
+    color: var(--text-main);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    border-color: var(--accent-glow);
+    box-shadow: 0 20px 30px -15px rgba(2, 12, 27, 0.7);
+}
+
+.btn-primary {
+    background-color: transparent;
+    border: 1px solid var(--accent-glow);
+    color: var(--accent-glow);
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+    background-color: rgba(100, 255, 218, 0.1);
+    color: var(--accent-glow);
+    border-color: var(--accent-glow);
+}
+
+.hero-section {
+    background: var(--gradient-bg);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 50%, rgba(100, 255, 218, 0.05) 0%, transparent 70%);
+}
+
+.text-muted {
+    color: var(--text-dim) !important;
+}
+
+/* Advanced Dark Navy Login Page */
+.login-body {
+    background: #020c1b;
+}
+
+.login-card {
+    background: var(--navy-light);
+    border: none;
+    box-shadow: 0 10px 30px -10px rgba(2, 12, 27, 0.7);
+}
+
+.form-control {
+    background-color: var(--navy-dark);
+    border: 1px solid var(--navy-accent);
+    color: var(--text-main);
+}
+
+.form-control:focus {
+    background-color: var(--navy-dark);
+    color: var(--text-main);
+    border-color: var(--accent-glow);
+    box-shadow: 0 0 10px rgba(100, 255, 218, 0.1);
+}
+
+footer {
+    background-color: #020c1b !important;
+    border-top: 1px solid var(--navy-accent);
+}
+
+.social-links a {
+    color: var(--text-dim) !important;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--accent-glow) !important;
+}
+
+/* Gallery Hover */
+.gallery-item {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.gallery-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 25, 47, 0.7);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
+
+.gallery-item:hover::before {
+    opacity: 1;
+}

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}Admin Login | CharityOrg{% endblock %}
+{% block body_class %}login-body{% endblock %}
+
+{% block content %}
+<section class="py-5 min-vh-100 d-flex align-items-center">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-5">
+                <div class="card login-card p-4">
+                    <div class="card-body">
+                        <div class="text-center mb-4">
+                            <h2 class="fw-bold" style="color: #64ffda;">Admin Access</h2>
+                            <p class="text-muted">Enter your credentials to manage the organization.</p>
+                        </div>
+                        <form method="POST">
+                            <div class="mb-3">
+                                <label class="form-label text-white">Username</label>
+                                <input type="text" name="username" class="form-control p-3" placeholder="admin" required>
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label text-white">Password</label>
+                                <input type="password" name="password" class="form-control p-3" placeholder="••••••••" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-lg w-100 py-3 fw-bold">Sign In</button>
+                        </form>
+                        <div class="mt-4 text-center">
+                            <a href="{{ url_for('index') }}" class="text-muted text-decoration-none small"><i class="fas fa-arrow-left me-1"></i> Back to Home</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-4">
+                    <p class="text-muted small">Protected by advanced encryption</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

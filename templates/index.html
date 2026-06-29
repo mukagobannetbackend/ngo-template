@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section text-white d-flex align-items-center" style="height: 90vh;">
+    <div class="container text-center z-2">
+        <h1 class="display-2 fw-bold mb-4" style="color: #ccd6f6;">Empower Change, <span style="color: #64ffda;">Inspire Hope</span></h1>
+        <p class="lead mb-5 text-muted mx-auto" style="max-width: 700px;">Your small contribution can make a big difference in someone's life today. Join us in building a more equitable future for all.</p>
+        <div>
+            <a href="{{ url_for('donate') }}" class="btn btn-primary btn-lg px-5 py-3 me-3">Donate Now</a>
+            <a href="{{ url_for('about') }}" class="btn btn-outline-light btn-lg px-5 py-3" style="border-color: #64ffda; color: #64ffda;">Learn More</a>
+        </div>
+    </div>
+</section>
+
+<!-- Stats Section -->
+<section class="py-5" style="background-color: #020c1b;">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-3 mb-4">
+                <h2 class="fw-bold" style="color: #64ffda;">10k+</h2>
+                <p class="text-muted">Lives Impacted</p>
+            </div>
+            <div class="col-md-3 mb-4">
+                <h2 class="fw-bold" style="color: #64ffda;">50+</h2>
+                <p class="text-muted">Active Projects</p>
+            </div>
+            <div class="col-md-3 mb-4">
+                <h2 class="fw-bold" style="color: #64ffda;">5k+</h2>
+                <p class="text-muted">Volunteers</p>
+            </div>
+            <div class="col-md-3 mb-4">
+                <h2 class="fw-bold" style="color: #64ffda;">$1M+</h2>
+                <p class="text-muted">Donations Raised</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Programs -->
+<section class="py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold text-white">Our Recent Projects</h2>
+            <p class="text-muted">Explore the initiatives we're currently working on.</p>
+        </div>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <!-- Local Image Placeholder -->
+                    <div style="height: 250px; background: #233554; display: flex; align-items: center; justify-content: center;">
+                        <img src="{{ url_for('static', filename='images/health.jpg') }}" onerror="this.style.display='none'; this.parentNode.innerHTML='<i class=\'fas fa-image fa-3x text-muted\'></i><p class=\'text-muted ms-2\'>[Place project1.jpg here]</p>'" class="card-img-top h-100 object-fit-cover" alt="Project 1">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold" style="color: #64ffda;">Education for All</h5>
+                        <p class="card-text text-muted">Providing quality education and supplies to underprivileged children in rural areas.</p>
+                        <a href="{{ url_for('programs') }}" class="btn btn-link text-decoration-none p-0" style="color: #64ffda;">Read More <i class="fas fa-arrow-right ms-1"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div style="height: 250px; background: #233554; display: flex; align-items: center; justify-content: center;">
+                        <img src="{{ url_for('static', filename='images/gallery5.jpg') }}" onerror="this.style.display='none'; this.parentNode.innerHTML='<i class=\'fas fa-image fa-3x text-muted\'></i><p class=\'text-muted ms-2\'>[Place project2.jpg here]</p>'" class="card-img-top h-100 object-fit-cover" alt="Project 2">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold" style="color: #64ffda;">Clean Water Project</h5>
+                        <p class="card-text text-muted">Building sustainable water systems to provide clean and safe drinking water to communities.</p>
+                        <a href="{{ url_for('programs') }}" class="btn btn-link text-decoration-none p-0" style="color: #64ffda;">Read More <i class="fas fa-arrow-right ms-1"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div style="height: 250px; background: #233554; display: flex; align-items: center; justify-content: center;">
+                        <img src="{{ url_for('static', filename='images/gallery6.jpg') }}" onerror="this.style.display='none'; this.parentNode.innerHTML='<i class=\'fas fa-image fa-3x text-muted\'></i><p class=\'text-muted ms-2\'>[Place project3.jpg here]</p>'" class="card-img-top h-100 object-fit-cover" alt="Project 3">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold" style="color: #64ffda;">Healthcare Access</h5>
+                        <p class="card-text text-muted">Mobile clinics and medical supplies for remote villages lacking basic healthcare facilities.</p>
+                        <a href="{{ url_for('programs') }}" class="btn btn-link text-decoration-none p-0" style="color: #64ffda;">Read More <i class="fas fa-arrow-right ms-1"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Video Call to Action -->
+<section class="py-5" style="background-color: #112240;">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6 mb-4">
+                <h2 class="fw-bold text-white mb-4">Watch Our Impact</h2>
+                <p class="text-muted lead">See how your contributions are changing lives on the ground. We believe in complete transparency and showing the real results of our programs.</p>
+                <a href="{{ url_for('donate') }}" class="btn btn-primary mt-3">Support Our Cause</a>
+            </div>
+            <div class="col-md-6">
+                <div class="ratio ratio-16x9 rounded overflow-hidden shadow-lg border border-secondary">
+                    <video controls poster="{{ url_for('static', filename='images/video-poster.jpg') }}">
+                        <source src="{{ url_for('static', filename='videos/video2.mp4') }}" type="video/mp4">
+                        Your browser does not support the video tag. [Place impact.mp4 in static/videos]
+                    </video>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

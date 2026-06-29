@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% block title %}Donate | CharityOrg{% endblock %}
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+                    <div class="card-body p-5">
+                        <div class="text-center mb-5">
+                            <h2 class="fw-bold text-white">Make a <span style="color: #64ffda;">Donation</span></h2>
+                            <p class="text-muted">Your generosity helps us continue our vital work. Securely processed via Flutterwave.</p>
+                        </div>
+                        
+                        <form id="donationForm">
+                            <div class="row g-4">
+                                <div class="col-md-6">
+                                    <label class="form-label text-white fw-bold">Full Name</label>
+                                    <input type="text" class="form-control p-3" id="donorName" placeholder="John Doe" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label text-white fw-bold">Email Address</label>
+                                    <input type="email" class="form-control p-3" id="donorEmail" placeholder="john@example.com" required>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label text-white fw-bold">Donation Amount (USD)</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-navy-dark border-secondary text-white">$</span>
+                                        <input type="number" class="form-control p-3" id="donationAmount" placeholder="25.00" step="0.01" min="1" required>
+                                    </div>
+                                </div>
+                                <div class="col-12 mt-5">
+                                    <button type="button" class="btn btn-primary btn-lg w-100 py-3 fw-bold" onclick="makePayment()">Proceed to Secure Payment</button>
+                                </div>
+                            </div>
+                        </form>
+                        
+                        <div class="mt-5 text-center pt-4 border-top border-secondary">
+                            <p class="text-muted small mb-3">SECURED BY</p>
+                            <img src="https://flutterwave.com/images/logo/logo-colored.svg" height="25" alt="Flutterwave" style="filter: brightness(0) invert(1); opacity: 0.7;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://checkout.flutterwave.com/v3.js"></script>
+<script>
+  function makePayment() {
+    const name = document.getElementById('donorName').value;
+    const email = document.getElementById('donorEmail').value;
+    const amount = document.getElementById('donationAmount').value;
+
+    if (!name || !email || !amount) {
+        alert("Please fill in all required fields.");
+        return;
+    }
+
+    FlutterwaveCheckout({
+      public_key: "FLWPUBK_TEST-SANDBOX-KEY",
+      tx_ref: "CHARITY-" + Math.floor((Math.random() * 1000000000) + 1),
+      amount: amount,
+      currency: "USD",
+      customer: {
+        email: email,
+        name: name,
+      },
+      callback: function (data) {
+        window.location.href = "/donation-success";
+      },
+      customizations: {
+        title: " Donation",
+        description: "Payment for supporting our mission",
+        logo: "https://via.placeholder.com/150",
+      },
+    });
+  }
+</script>
+{% endblock %}

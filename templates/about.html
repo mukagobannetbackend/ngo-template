@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}About Us | JJGRIFTHS{% endblock %}
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <h1 class="display-4 fw-bold text-center mb-5 text-white">About Our <span style="color: #64ffda;">JJGRIFTHS young and orphanage foundation </span></h1>
+        <div class="row align-items-center">
+            <div class="col-md-6 mb-4">
+                <div class="rounded shadow-lg overflow-hidden border border-secondary" style="height: 400px; background: #112240; display: flex; align-items: center; justify-content: center;">
+                    <img src="{{ url_for('static', filename='images/image1.1.jpg') }}" onerror="this.style.display='none'; this.parentNode.innerHTML='<i class=\'fas fa-users fa-5x text-muted\'></i><p class=\'text-muted ms-2\'>[about-us.jpg]</p>'" class="img-fluid w-100 h-100 object-fit-cover" alt="About Us">
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <h2 class="fw-bold mb-3 text-white">Who We Are</h2>
+                <p class="text-muted lead">Founded in 2010, CharityOrg has been at the forefront of community development and humanitarian aid.</p>
+                <p class="text-muted">Our team of dedicated professionals and volunteers work tirelessly to implement sustainable solutions that address the root causes of poverty and inequality.</p>
+                <div class="mt-4">
+                    <div class="d-flex align-items-start mb-3">
+                        <i class="fas fa-check-circle mt-1 me-3" style="color: #64ffda;"></i>
+                        <div>
+                            <h5 class="fw-bold text-white mb-1">Transparent & Accountable</h5>
+                            <p class="small text-muted">90% of all donations go directly to our field programs.</p>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-start">
+                        <i class="fas fa-check-circle mt-1 me-3" style="color: #64ffda;"></i>
+                        <div>
+                            <h5 class="fw-bold text-white mb-1">Community Driven</h5>
+                            <p class="small text-muted">We work closely with local leaders to ensure long-term success.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
