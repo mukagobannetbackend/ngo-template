@@ -82,16 +82,20 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                     <div class="ratio ratio-16x9 rounded overflow-hidden shadow-lg border border-secondary">
-                    <video controls poster="{{ url_for('static', filename='images/video-poster.jpg') }}">
-                        <source src="{{ url_for('static', filename='videos/video2.mp4') }}" type="video/mp4">
-                        Your browser does not support the video tag. [Place impact.mp4 in static/videos]
-                    </video>
+             <div class="col-md-6">
+                <div class="gallery-item shadow-sm border border-secondary rounded overflow-hidden">
+                    <div class="ratio ratio-16x9">
+                        <video controls>
+                            <source src="{{ url_for('static', filename='videos/video2.mp4') }}" type="video/mp4">
+                            [Place video1.mp4 in static/videos]
+                        </video>
+                    </div>
                     <div class="p-3 bg-navy-light">
-                        <h5 class="text-white mb-0">Community Vedeo</h5>
+                        <h5 class="text-white mb-0">our voices 2026</h5>
                     </div>
                 </div>
+            </div>
+            
             </div>
         </div>
     </div>
